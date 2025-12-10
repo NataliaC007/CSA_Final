@@ -6,7 +6,7 @@ public class Weapon
     private String dieType;
     private int modifier;
 
-    public Weapon(String n, String dt, int nd, String dieT, int mod, String sub)
+    public Weapon(String n, String dt, int nd, String dieT, int mod)
     {
         name = n;
         damageType = dt;

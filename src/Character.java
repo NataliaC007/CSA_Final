@@ -46,6 +46,11 @@ public class Character
         return weaponInUse;
     }
 
+    public void equipWeapon(Weapon w)
+    {
+        weaponInUse = w;
+    }
+
     public String toString()
     {
         return name + " is a level " + level + " " + characterClass.getName() + " with " + hp + "hp and is currently wielding a " + weaponInUse.getName();

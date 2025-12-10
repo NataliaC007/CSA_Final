@@ -21,43 +21,43 @@ public class CharClass
         }
         else if (name.equals("Wizard"))
         {
-            starterWeapon.setName("Longsword");
+            starterWeapon.setName("Quarterstaff");
             starterWeapon.setNumDice(1);
-            starterWeapon.setDamageType("Slashing");
+            starterWeapon.setDamageType("Bludgeoning");
             starterWeapon.setModifier(2);
-            starterWeapon.setDieType("D8");
+            starterWeapon.setDieType("D6");
         }
         else if (name.equals("Bard"))
         {
-            starterWeapon.setName("Longsword");
+            starterWeapon.setName("Rapier");
             starterWeapon.setNumDice(1);
-            starterWeapon.setDamageType("Slashing");
+            starterWeapon.setDamageType("Piercing");
             starterWeapon.setModifier(2);
             starterWeapon.setDieType("D8");
         }
         else if (name.equals("Cleric"))
         {
-            starterWeapon.setName("Longsword");
+            starterWeapon.setName("Warhammer");
             starterWeapon.setNumDice(1);
-            starterWeapon.setDamageType("Slashing");
+            starterWeapon.setDamageType("Bludgeoning");
             starterWeapon.setModifier(2);
             starterWeapon.setDieType("D8");
         }
         else if (name.equals("Fighter"))
         {
-            starterWeapon.setName("Longsword");
-            starterWeapon.setNumDice(1);
+            starterWeapon.setName("Greatsword");
+            starterWeapon.setNumDice(2);
             starterWeapon.setDamageType("Slashing");
             starterWeapon.setModifier(2);
-            starterWeapon.setDieType("D8");
+            starterWeapon.setDieType("D6");
         }
         else
         {
-            starterWeapon.setName("Longsword");
+            starterWeapon.setName("Shortsword");
             starterWeapon.setNumDice(1);
-            starterWeapon.setDamageType("Slashing");
+            starterWeapon.setDamageType("Piercing");
             starterWeapon.setModifier(2);
-            starterWeapon.setDieType("D8");
+            starterWeapon.setDieType("D6");
         }
         return starterWeapon;
     }
