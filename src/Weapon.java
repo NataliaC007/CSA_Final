@@ -24,6 +24,7 @@ public class Weapon
         modifier = 0;
     }
 
+
     public String getName()
     {
         return name;
