@@ -1,5 +1,3 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
 //add shield type things
 //spells
@@ -12,13 +10,13 @@ import java.util.Scanner;
 public static void main(String[] args)
 {
     Scanner input = new Scanner(System.in);
-
+    //Intro to game
     System.out.println("WELCOME ADVENTURER! PLEASE CREATE AN ENJOINED");
     System.out.println("What shall be your name?");
     String name = input.nextLine();
-    System.out.println("And what kind of warrior are you? (Paladin, Wizard, Bard, Cleric, Fighter, Rouge)");
+    System.out.println("And what kind of warrior are you? (Paladin, Wizard, Bard, Cleric, Fighter, Rogue)");
     String cc = input.nextLine();
-
+    //creates a new character
     CharClass playerClass = new CharClass(cc);
     Character player = new Character(name, 1, playerClass.getStarterHP(), playerClass, playerClass.getStarterWeapon());
 
@@ -28,10 +26,13 @@ public static void main(String[] args)
 
     while(option != 5)
     {
+        //"Meat" of the game, takes in whatever number the user put in
         System.out.println("\nWhat would you like to do? \n1. Go on a quest \n2. Rest \n3. Go Shopping! \n4. View my stats \n5. Quit (Enter the number of your choice)");
         option = input.nextInt();
+        input.nextLine();
         if (option == 1)
         {
+            //randomizes a quest
             int find = DieRoller.rollD4();
             if(find == 1)
             {
@@ -42,10 +43,12 @@ public static void main(String[] args)
                     System.out.println("Great! Now, what would you like to do? \n1. Follow the light deeper into the fog \n2. Try to shout and see if anything responds \n3. Tie a rope to a tree and explore carefully (Enter the number of your choice)");
                     //Monster: Fogling (a small, ghost-like creature that mimics voices) //The lantern holds the fogling
                     int num = input.nextInt();
+                    input.nextLine();
                     if(num == 1)
                     {
                         System.out.println("You follow the light further into the fog, just you and the eerie fog, within 2 minutes you reach the center and lying in the center is a relatively large lantern flickering blue. \nWhat do you want to do? \n1. Pick up the lantern and observe it \n2. RUN!");
                         int choice = input.nextInt();
+                        input.nextLine();
                         if(choice == 1)
                         {
                             System.out.println("As you reach for the lantern, it begins to shake and suddenly you are face to face with a small, ghost-like creature. You let out a shriek and almost instantaneously it mimics it exactly.");
@@ -54,20 +57,90 @@ public static void main(String[] args)
                             {
                                 System.out.println("You recognize this creature as a Fogling, commonly found in, well, fog.");
                             }
-                            System.out.println("There's no turning back now you have been forced to fight");
+                            System.out.println("There's no turning back now, you have been forced to fight");
+                            //fight sequence
                         }
                         else
                         {
-
+                            boolean runSuccess = run(9);
+                            if(runSuccess == false)
+                            {
+                                System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
+                                //fight sequence
+                            }
+                            else
+                            {
+                                System.out.println("Phew! You got out of there just in time. You dodged the threat, but you don't get any gold. What a coward!");
+                            }
                         }
                     }
                     else if(num == 2)
                     {
-
+                        System.out.println("You shout into the distance, 'HELLO!! IS ANYONE THERE!' within seconds you receive a response, but instead of hearing someone else, you hear a mere repeat of your own voice. 'HELLO!! IS ANYONE THERE!' same pitch, everything, but this isn't an echo...");
+                        System.out.println("What do you want to do? \n1. Go forth into the fog, what's there to lose? Just your life... \n2. RUN!");
+                        int choice = input.nextInt();
+                        input.nextLine();
+                        if(choice == 1)
+                        {
+                            System.out.println("You made a smart choice, you go straight into the fog, once you reach the center you see... THE LANTERN \nWhat do you want to do? \n1. Inspect it \n2. RUN!");
+                            int choice2 = input.nextInt();
+                            input.nextLine();
+                            if(choice2 == 1)
+                            {
+                                System.out.println("As you reach for the lantern, it begins to shake and suddenly you are face to face with a small, ghost-like creature. You let out a shriek and almost instantaneously it mimics it exactly.");
+                                int roll = DieRoller.rollD20(); //+wisdom
+                                if(roll >= 13)
+                                {
+                                    System.out.println("You recognize this creature as a Fogling, commonly found in, well, fog.");
+                                }
+                                System.out.println("There's no turning back now, you have been forced to fight");
+                                //fight sequence
+                            }
+                            else
+                            {
+                               boolean runSuccess = run(9);
+                               if(runSuccess == false)
+                               {
+                                   System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
+                                   //fight sequence
+                               }
+                               else
+                               {
+                                   System.out.println("Phew! You got out of there just in time. You dodged the threat, but you don't get any gold. What a coward!");
+                               }
+                            }
+                        }
                     }
                     else
                     {
-
+                        System.out.println("You tie yourself to a tree leaving about 50 feet of wiggle room, off you venture into The Fog");
+                        System.out.println("You follow the light further into the fog, just you and the eerie fog, within 2 minutes you reach the center and lying in the center is a relatively large lantern flickering blue. \nWhat do you want to do? \n1. Pick up the lantern and observe it \n2. RUN!");
+                        int choice = input.nextInt();
+                        input.nextLine();
+                        if(choice == 1)
+                        {
+                            System.out.println("As you reach for the lantern, it begins to shake and suddenly you are face to face with a small, ghost-like creature. You let out a shriek and almost instantaneously it mimics it exactly.");
+                            int roll = DieRoller.rollD20(); //+wisdom
+                            if(roll >= 13)
+                            {
+                                System.out.println("You recognize this creature as a Fogling, commonly found in, well, fog.");
+                            }
+                            System.out.println("There's no turning back now, you have been forced to fight");
+                            //fight sequence
+                        }
+                        else
+                        {
+                            boolean runSuccess = run(9);
+                            if(runSuccess == false)
+                            {
+                                System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
+                                //fight sequence
+                            }
+                            else
+                            {
+                                System.out.println("Phew! You got out of there just in time. You dodged the threat, but you don't get any gold. What a coward!");
+                            }
+                        }
                     }
                 }
             }
@@ -80,6 +153,7 @@ public static void main(String[] args)
                     System.out.println("Great! Now, what would you like to do? \n1. Search the forest for the missing shrine stones \n2. Attempt to speak with the spirit directly \n3. Offer something valuable to appease it (Enter the number of your choice)");
                     //Monster: Briarwolf (a wolf with thorns and roots growing through its fur) The spirit is not hostile-it's trapped repairing the shrine frees it, ignoring its pleas will cause the forest to turn against you
                     int num = input.nextInt();
+                    input.nextLine();
                     if(num == 1)
                     {
 
@@ -103,6 +177,7 @@ public static void main(String[] args)
                     System.out.println("Great! Now, what would you like to do? \n1. Swim into the remaining water-filled tunnels \n2. Use tools to break open the gate  \n3. Investigate the ancient symbol carved around it (Enter the number of your choice)");
                     //Monster: Drowned Shade (a skeletal spirit bound to the gate) The prisoner behind the gate isn't evil -it's a trapped memory, a fragment of someone's past offering knowledge and power if you release it
                     int num = input.nextInt();
+                    input.nextLine();
                     if(num == 1)
                     {
 
@@ -126,6 +201,7 @@ public static void main(String[] args)
                     System.out.println("Great! Now, what would you like to do? \n1. Sneak through the fortress catacombs \n2. Challenge the warlord openly \n3. Forge a replica crown to trick him (Enter the number of your choice)");
                     //Monster: Ashborn Golem (a towering guardian made from cooled volcanic rock) If you place the crown on your head, it becomes a powerful ally; fail, and the flames consume your identity
                     int num = input.nextInt();
+                    input.nextLine();
                     if(num == 1)
                     {
 
@@ -158,11 +234,12 @@ public static void main(String[] args)
         {
             System.out.println("\nWelcome to the shop! What would you like to buy? \n1. WEAPONS \n2. ARMOR \n3. HEALTH \n4. SPELLS (Enter the number of your choice)");
             int choice = input.nextInt();
+            input.nextLine();
             if (choice == 1)
             {
                 System.out.println("Welcome to the Forge! Here is our stock! \n1. Longsword \n2. Shortsword \n3. Mace \n4. Greataxe \n5. Greatclub (Enter the number of your choice)");
                 int weaponOption = input.nextInt();
-                String equip;
+                input.nextLine();
                 if(weaponOption == 1)
                 {
                     Weapon longsword = new Weapon("Longsword", "Slashing", 1, "D8", 2);
@@ -212,6 +289,21 @@ public static void main(String[] args)
             System.out.println(player);
         }
     }
+    System.out.println(player);
+    System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
     System.exit(0);
 }
-//token: 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
+
+//method to check if the player can "run" or escape from a quest
+static boolean run(int dc)
+{
+    int run = DieRoller.rollD20(); //+dex
+    if(run >= dc)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
