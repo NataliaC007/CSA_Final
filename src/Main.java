@@ -18,7 +18,7 @@ public static void main(String[] args)
     String cc = input.nextLine();
     //creates a new character
     CharClass playerClass = new CharClass(cc);
-    Character player = new Character(name, 1, playerClass.getStarterHP(), playerClass, playerClass.getStarterWeapon());
+    PlayerCharacter player = new PlayerCharacter(name, 1, playerClass.getStarterHP(), playerClass, playerClass.getStarterWeapon());
 
     System.out.println(player);
     System.out.println("You have successfully become enjoined! Welcome to NYCOS " + player.getName() + "!");
@@ -42,6 +42,7 @@ public static void main(String[] args)
                 {
                     System.out.println("Great! Now, what would you like to do? \n1. Follow the light deeper into the fog \n2. Try to shout and see if anything responds \n3. Tie a rope to a tree and explore carefully (Enter the number of your choice)");
                     //Monster: Fogling (a small, ghost-like creature that mimics voices) //The lantern holds the fogling
+                    Monster fogling = new Monster("Fogling",10, 11, 50, 4);
                     int num = input.nextInt();
                     input.nextLine();
                     if(num == 1)
@@ -59,6 +60,40 @@ public static void main(String[] args)
                             }
                             System.out.println("There's no turning back now, you have been forced to fight");
                             //fight sequence
+                           while(fogling.getHP() > 0)
+                            {
+                                int damage1 = player.getCurrentWeapon().attack(fogling);
+                                if(damage1 > 0)
+                                {
+                                    System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                }
+                                else
+                                {
+                                    System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                }
+                                int damage2 = fogling.attack(player);
+                                if(damage2 > 0)
+                                {
+                                    System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                }
+                                else
+                                {
+                                    System.out.println("The Fogling missed! Get in there!");
+                                }
+                                if(player.getHP() <= 0)
+                                {
+                                    System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                    System.out.println(player);
+                                    System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                    System.exit(0);
+                                }
+                            }
+                            System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                            if(player.levelUp(fogling.getXP()) == true)
+                            {
+                                System.out.println("AND you leveled up!");
+                                System.out.println(player);
+                            }
                         }
                         else
                         {
@@ -67,6 +102,40 @@ public static void main(String[] args)
                             {
                                 System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
                                 //fight sequence
+                                while(fogling.getHP() > 0)
+                                {
+                                    int damage1 = player.getCurrentWeapon().attack(fogling);
+                                    if(damage1 > 0)
+                                    {
+                                        System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                    }
+                                    int damage2 = fogling.attack(player);
+                                    if(damage2 > 0)
+                                    {
+                                        System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("The Fogling missed! Get in there!");
+                                    }
+                                    if(player.getHP() <= 0)
+                                    {
+                                        System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                        System.out.println(player);
+                                        System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                        System.exit(0);
+                                    }
+                                }
+                                System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                                if(player.levelUp(fogling.getXP()) == true)
+                                {
+                                    System.out.println("AND you leveled up!");
+                                    System.out.println(player);
+                                }
                             }
                             else
                             {
@@ -95,6 +164,40 @@ public static void main(String[] args)
                                 }
                                 System.out.println("There's no turning back now, you have been forced to fight");
                                 //fight sequence
+                                while(fogling.getHP() > 0)
+                                {
+                                    int damage1 = player.getCurrentWeapon().attack(fogling);
+                                    if(damage1 > 0)
+                                    {
+                                        System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                    }
+                                    int damage2 = fogling.attack(player);
+                                    if(damage2 > 0)
+                                    {
+                                        System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("The Fogling missed! Get in there!");
+                                    }
+                                    if(player.getHP() <= 0)
+                                    {
+                                        System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                        System.out.println(player);
+                                        System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                        System.exit(0);
+                                    }
+                                }
+                                System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                                if(player.levelUp(fogling.getXP()) == true)
+                                {
+                                    System.out.println("AND you leveled up!");
+                                    System.out.println(player);
+                                }
                             }
                             else
                             {
@@ -103,6 +206,40 @@ public static void main(String[] args)
                                {
                                    System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
                                    //fight sequence
+                                   while(fogling.getHP() > 0)
+                                   {
+                                       int damage1 = player.getCurrentWeapon().attack(fogling);
+                                       if(damage1 > 0)
+                                       {
+                                           System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                       }
+                                       else
+                                       {
+                                           System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                       }
+                                       int damage2 = fogling.attack(player);
+                                       if(damage2 > 0)
+                                       {
+                                           System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                       }
+                                       else
+                                       {
+                                           System.out.println("The Fogling missed! Get in there!");
+                                       }
+                                       if(player.getHP() <= 0)
+                                       {
+                                           System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                           System.out.println(player);
+                                           System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                           System.exit(0);
+                                       }
+                                   }
+                                   System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                                   if(player.levelUp(fogling.getXP()) == true)
+                                   {
+                                       System.out.println("AND you leveled up!");
+                                       System.out.println(player);
+                                   }
                                }
                                else
                                {
@@ -127,6 +264,40 @@ public static void main(String[] args)
                             }
                             System.out.println("There's no turning back now, you have been forced to fight");
                             //fight sequence
+                            while(fogling.getHP() > 0)
+                            {
+                                int damage1 = player.getCurrentWeapon().attack(fogling);
+                                if(damage1 > 0)
+                                {
+                                    System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                }
+                                else
+                                {
+                                    System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                }
+                                int damage2 = fogling.attack(player);
+                                if(damage2 > 0)
+                                {
+                                    System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                }
+                                else
+                                {
+                                    System.out.println("The Fogling missed! Get in there!");
+                                }
+                                if(player.getHP() <= 0)
+                                {
+                                    System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                    System.out.println(player);
+                                    System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                    System.exit(0);
+                                }
+                            }
+                            System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                            if(player.levelUp(fogling.getXP()) == true)
+                            {
+                                System.out.println("AND you leveled up!");
+                                System.out.println(player);
+                            }
                         }
                         else
                         {
@@ -135,6 +306,40 @@ public static void main(String[] args)
                             {
                                 System.out.println("You're a bit to clumsy to be bailing right now, you tripped on a branch on your way out, there's no turning back now, you have been forced to fight!");
                                 //fight sequence
+                                while(fogling.getHP() > 0)
+                                {
+                                    int damage1 = player.getCurrentWeapon().attack(fogling);
+                                    if(damage1 > 0)
+                                    {
+                                        System.out.println("Fogling has been hit for " + damage1 + " damage! Keep it up!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("As you go in for the swing, you miss. It's okay get 'em next time!");
+                                    }
+                                    int damage2 = fogling.attack(player);
+                                    if(damage2 > 0)
+                                    {
+                                        System.out.println("You have been hit for " + damage2 + " damage, get back up at it!");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("The Fogling missed! Get in there!");
+                                    }
+                                    if(player.getHP() <= 0)
+                                    {
+                                        System.out.println("You tried but it was just too much! You did good on your adventure!");
+                                        System.out.println(player);
+                                        System.out.println(player.getName() + " rolled a total of " + DieRoller.getTotalRolls() + " times!");
+                                        System.exit(0);
+                                    }
+                                }
+                                System.out.println("YOU DID IT! You defeated the Fogling! You gained " + fogling.getXP() + " XP!");
+                                if(player.levelUp(fogling.getXP()) == true)
+                                {
+                                    System.out.println("AND you leveled up!");
+                                    System.out.println(player);
+                                }
                             }
                             else
                             {

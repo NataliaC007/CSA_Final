@@ -103,6 +103,7 @@ public class Weapon
                 dmg = DieRoller.rollD4();
             }
         }
+        m.getHit(dmg);
         return dmg;
     }
 }
